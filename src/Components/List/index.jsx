@@ -1,41 +1,30 @@
-// function List(props) {
-//     return (
-//       props.list.map(item => (
-//         <div key={item.id}>
-//           <p>{item.text}</p>
-//           <p><small>Assigned to: {item.assignee}</small></p>
-//           <p><small>Difficulty: {item.difficulty}</small></p>
-//           <div onClick={() => toggleComplete(item.id)}>Complete: {item.complete.toString()}</div>
-//           <hr />
-//         </div>
-//       ))
-//     );
-//   }
-  
-import React from 'react';
-
+import { Pagination } from '@mantine/core';
+import { SettingsContext } from '../Context/Settings';
+import { useContext, useState } from 'react';
 function List(props) {
-  const toggleComplete = (itemId) => {
-    // Code logic to toggle the completion status of the item with the specified itemId
-    // Example implementation:
-    // 1. Find the item in the list using the itemId
-    // 2. Toggle the `complete` property of the item
-    // 3. Update the state or re-render the component to reflect the changes
-  };
-
+  const { pageItems, completed, sort } = useContext(SettingsContext);
+  const [currentPage, setCurrentPage] = useState(1);
+  const pages = Math.ceil(props.list.length / pageItems);
+  const firstItem = (currentPage - 1) * pageItems;
+  const lastItem = currentPage * pageItems;
+  const finalItems = props.list.slice(firstItem, lastItem);
   return (
-    <div>
-      {props.list.map(item => (
+    <>
+      {finalItems.map(item => (
         <div key={item.id}>
           <p>{item.text}</p>
           <p><small>Assigned to: {item.assignee}</small></p>
           <p><small>Difficulty: {item.difficulty}</small></p>
-          <div onClick={() => toggleComplete(item.id)}>Complete: {item.complete.toString()}</div>
+          <div onClick={() => props.toggleComplete(item.id)}>Complete: {item.complete.toString()}</div>
           <hr />
         </div>
       ))}
-    </div>
-  );
+      <Pagination
+        total={pages}
+        value={currentPage}
+        onChange={(value)=> setCurrentPage(value)}
+      />
+    </>
+  )
 }
-
 export default List;
