@@ -21,6 +21,8 @@ Reece
 Ike
 Coriana Williams
 
+![UML 31](UML31.png)
+
 ## Lab Class 32
 
 ### Problem Domain
@@ -42,3 +44,4 @@ Retrieve their preferences from Local Storage and apply them to the application 
 
 Coriana Williams
 
+![UML 31](UML32.png)
