@@ -21,7 +21,7 @@ Reece
 Ike
 Coriana Williams
 
-## Lab Class 31
+## Lab Class 32
 
 ### Problem Domain
 
