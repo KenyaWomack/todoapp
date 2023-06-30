@@ -64,3 +64,11 @@ As a user, I want to ensure that only fellow users that are allowed to “delete
 Coriana Williams
 
 ![UML 33](UML33.png)
+
+## Lab 34 API Integration
+
+## Problem Domain
+
+In Phase 4, we will finalize the functionality of the application by connecting to live servers for login, authorization, and data access.
+
+![UML 33](UML33.png)
