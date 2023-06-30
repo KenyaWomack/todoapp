@@ -1,24 +1,34 @@
 import React, { useState } from 'react';
 
-// create context---------
-export const SettingsContext = React.createContext()
+// create context
+export const SettingsContext = React.createContext();
 
-// create provider
+// create a provider
 function SettingsProvider({ children }){
+  // we will use the setters tomorrow!
   const [title, setTitle] = useState('Some Site');
   const [email, setEmail] = useState('kenya@codefellows.com');
   const [staff, setStaff] = useState([
-    {name: 'Kenya', position: 'instructor'},
+    {name: 'Kenya', position: 'Instructor'},
   ])
 
-  // this will be the SettingsContext STATE
+  // we can "do the thing here" to make calculations etc
+  // useReducer to manage state 
+  const addStaff = (newMember) => {
+    setStaff([...staff, newMember]);
+  }
+
+  // context is THIS object
   const values = {
     title,
     email,
     staff,
+    setTitle,
+    setEmail,
+    addStaff,
   }
 
-  return (
+  return(
     <SettingsContext.Provider value={values}>
       {children}
     </SettingsContext.Provider>
